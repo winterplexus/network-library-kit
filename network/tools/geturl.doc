@@ -1,0 +1,31 @@
+
+geturl                                                                    geturl
+
+NAME
+
+  geturl - get URL (encoded or decoded) utility
+
+SYNOPSIS
+
+  geturl (flags)
+
+DESCRIPTION
+
+  geturl is a program that will encode or decode a given URL using RFC 3986
+  syntax characters.
+
+FLAGS
+
+  The following flags are interpreted by geturl:
+
+  -?  display help
+  -d  URL to decode
+  -e  URL to encode
+  -v  print version information and exit
+
+NOTES
+
+  Copyright (c) 2001-2020 Code Construct Systems (CCS)
+
+  libnetwork 8.00 network interface library
+

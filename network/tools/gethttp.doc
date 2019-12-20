@@ -1,0 +1,62 @@
+
+getHTTP                                                                  getHTTP
+
+NAME
+
+  getHTTP - get HTTP response utility
+
+SYNOPSIS
+
+  getHTTP (flags)
+
+DESCRIPTION
+
+  getHTTP is a program that will interact with a HTTP server by sending requests
+  and displaying the responses to standard output.  The program requires at a
+  minimum the host name of the HTTP server and a request parameter string.
+
+  getHTTP has a set of control parameters that allow the user to set the network
+  timeout factor, port number of the HTTP server (if not port 80), the location
+  of the temporary output file for the HTTP response, and log file for debugging
+  purposes.
+
+FLAGS
+
+  The following flags are interpreted by getHTTP:
+
+  -h  host name of HTTP server
+  -p  port number used by HTTP server
+  -r  request parameters
+  -f  response file path (temporary output file for HTTP response)
+  -m  HTTP method [get|post]
+  -t  timeout (in seconds)
+  -l  log file name
+  -o  options
+  -d  enable debug
+  -v  print version of gethttp and exit
+  -?  print this usage
+
+  Options used by getHTTP include:
+
+  output-on (default)
+  output-off
+  statistics-on (default)
+  statistics-off
+
+DEFAULTS
+
+  getHTTP uses the following default values:
+
+  port number        : 80
+  HTTP response file : /var/tmp/getHTTP (temporary file name)
+  HTTP method        : GET
+  log file name      : getHTTP
+  output mode        : on
+  statistics mode    : on
+
+NOTES
+
+  Copyright (c) 2001-2020 Code Construct Systems (CCS)
+
+  libnetwork 8.00 network interface library
+

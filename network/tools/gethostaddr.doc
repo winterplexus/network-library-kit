@@ -1,0 +1,30 @@
+
+gethostaddr                                                          gethostaddr
+
+NAME
+
+  gethostaddr - get IP address of a DNS host utility
+
+SYNOPSIS
+
+  gethostaddr (flags)
+
+DESCRIPTION
+
+  gethostaddr is a program that will search for the Internet IP address of a DNS
+  host (or domain).  If the IP address is found it will be displayed in standard
+  dot notation (nnn.nnn.nnn.nnn).
+
+FLAGS
+
+  The following flags are interpreted by gethostaddr:
+
+  -?  display help
+  -h  DNS domain name host name
+  -v  display version of gethostaddr
+
+NOTES
+
+  Copyright (c) 2001-2020 Code Construct Systems (CCS)
+
+  libnetwork 8.00 network interface library
