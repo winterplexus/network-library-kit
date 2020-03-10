@@ -1,4 +1,4 @@
-library-network-kit
+Network Library Kit
 ===================
 
 Network library kit based on ANSI C for HTTP client TCP/IP socket applications.
