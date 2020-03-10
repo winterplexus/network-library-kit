@@ -1,7 +1,7 @@
 library-network-kit
 ===================
 
-Library network kit based on ANSI C for HTTP client TCP/IP socket applications.
+Network library kit based on ANSI C for HTTP client TCP/IP socket applications.
 
 Library includes the following components:
 
