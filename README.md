@@ -1,5 +1,5 @@
-Network Library Kit
-===================
+Network Library Kit for C
+=========================
 
 Network library kit based on ANSI C for HTTP client TCP/IP socket applications.
 
@@ -20,4 +20,3 @@ Reference network tools includes the following utility applications:
 * gethostname - get DNS host of a IP address utility
 
 * geturl - get URL (encoded or decoded) utility
-
