@@ -4,7 +4,7 @@
 **  libnetwork - HTTP networking utility functions
 **  ----------------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __HTTPUTIL_H
 #define __HTTPUTIL_H

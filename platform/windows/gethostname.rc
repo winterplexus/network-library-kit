@@ -80,12 +80,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Code Construct Systems (CCS)"
             VALUE "FileDescription", "libnetwork: get host name utility"
-            VALUE "FileVersion", "8.0.0.0"
+            VALUE "FileVersion", "8.1.0.0"
             VALUE "InternalName", "gethostname"
-            VALUE "LegalCopyright", "Copyright (C) 2001-2020 Code Construct Systems (CCS)"
+            VALUE "LegalCopyright", "Copyright (c) 2001-2024 Code Construct Systems (CCS)"
             VALUE "OriginalFilename", "gethostname.exe"
             VALUE "ProductName", "libnetwork"
-            VALUE "ProductVersion", "8.0.0.0"
+            VALUE "ProductVersion", "8.1.0.0"
         END
     END
     BLOCK "VarFileInfo"

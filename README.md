@@ -13,10 +13,10 @@ Library includes the following components:
 
 Reference network tools includes the following utility applications:
 
-* gethttp - get HTTP response utility
-
 * gethostaddr - get IP address of a DNS host utility
 
-* gethostname - get DNS host of a IP address utility
+* gethostname - get DNS host of a IP4 address utility
+
+* gethttp - get HTTP response utility (HTTP verbs include: GET or POST)
 
 * geturl - get URL (encoded or decoded) utility

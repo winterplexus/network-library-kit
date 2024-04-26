@@ -4,7 +4,7 @@
 **  libnetwork utility - get host IP address utility
 **  ------------------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __GETHOSTADDR_H
 #define __GETHOSTADDR_H

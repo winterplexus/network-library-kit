@@ -4,7 +4,7 @@
 **  libnetwork utility - get options functions
 **  ------------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __GETOPT_H
 #define __GETOPT_H

@@ -70,12 +70,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "Code Construct Systems (CCS)"
             VALUE "FileDescription", "libnetwork"
-            VALUE "FileVersion", "8.0.0.0"
+            VALUE "FileVersion", "8.1.0.0"
             VALUE "InternalName", "libnetwork"
-            VALUE "LegalCopyright", "Copyright (C) 2001-2020 Code Construct Systems (CCS)"
+            VALUE "LegalCopyright", "Copyright (c) 2001-2024 Code Construct Systems (CCS)"
             VALUE "OriginalFilename", "libnetwork.lib"
             VALUE "ProductName", "libnetwork"
-            VALUE "ProductVersion", "8.0.0.0"
+            VALUE "ProductVersion", "8.1.0.0"
         END
     END
     BLOCK "VarFileInfo"

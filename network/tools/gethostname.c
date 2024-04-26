@@ -4,7 +4,7 @@
 **  libnetwork utility - get host name from IP address utility
 **  ----------------------------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #include "modules.h"
 

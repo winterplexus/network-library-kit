@@ -4,7 +4,7 @@
 **  libnetwork - TCP/IP network interface functions
 **  -----------------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __NET_H
 #define __NET_H
@@ -105,7 +105,7 @@ extern SOCKET_DESCRIPTOR ServerConnect(const string_c_t, const int);
 extern int ServerSendRequest(SOCKET_DESCRIPTOR, const string_c_t, const string_c_t);
 extern int ServerReceiveResponse(SOCKET_DESCRIPTOR, string_c_t, int);
 extern int ServerGetHostAddress(string_c_t, string_c_t);
-extern int ServerDisconnect(int);
+extern int ServerDisconnect(SOCKET_DESCRIPTOR);
 extern int GetSocketOption(SOCKET_DESCRIPTOR, int, int, void *, int *);
 extern int SetSocketOption(SOCKET_DESCRIPTOR, int, int, const void *, int);
 extern int GetHostIPAddress(const string_c_t, string_c_t, size_t);

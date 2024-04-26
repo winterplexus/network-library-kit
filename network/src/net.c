@@ -4,7 +4,7 @@
 **  libnetwork - TCP/IP network interface functions
 **  -----------------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -131,7 +131,7 @@ int ServerReceiveResponse(SOCKET_DESCRIPTOR sock, string_c_t resp, int size) {
 /*
 ** Disconnect from TCP/IP server
 */
-int ServerDisconnect(int sock) {
+int ServerDisconnect(SOCKET_DESCRIPTOR sock) {
     /*
     ** Close socket
     */

@@ -2,9 +2,9 @@
 #                                                                              #
 # makefile.tools.os                                                            #
 #                                                                              #
-# libnetwork library - tools version 7.1.0 release 1                           #
+# libnetwork library - tools version 8.1.0 release 1                           #
 #                                                                              #
-# copyright 2001-2020 Code Construct Systems (CCS) [CONFIDENTIAL]              #
+# copyright 2001-2024 Code Construct Systems (CCS) [CONFIDENTIAL]              #
 #                                                                              #
 ################################################################################
 

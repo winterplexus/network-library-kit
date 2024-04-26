@@ -4,7 +4,7 @@
 **  libnetwork - library version information
 **  ----------------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __VERSION_H
 #define __VERSION_H
@@ -23,7 +23,7 @@
 ** Define product version and release number strings
 */
 #define _NETWORK_PRODUCT "libnetwork"
-#define _NETWORK_RELEASE "libnetwork v8.0.0 release 1"
+#define _NETWORK_RELEASE "libnetwork v8.1.0 release 1"
 
 /*
 ** Function prototypes

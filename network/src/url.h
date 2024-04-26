@@ -4,7 +4,7 @@
 **  libnetwork - HTTP URL functions
 **  -------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __URL_H
 #define __URL_H

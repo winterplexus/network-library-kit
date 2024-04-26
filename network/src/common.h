@@ -4,7 +4,7 @@
 **  libnetwork - common definitions
 **  -------------------------------
 **
-**  copyright 2001-2020 Code Construct Systems (CCS)
+**  copyright 2001-2024 Code Construct Systems (CCS)
 */
 #ifndef __COMMON_H
 #define __COMMON_H
@@ -78,7 +78,7 @@ typedef enum BooleanType {
 #endif
 
 /*
-** Define custon function pointer data type
+** Define custom function pointer data type
 */
 typedef void (*fptr_c_t)(int);
 
