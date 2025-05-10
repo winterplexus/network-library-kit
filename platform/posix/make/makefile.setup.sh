@@ -3,9 +3,9 @@
 #                                                                              #
 # setup.sh                                                                     #
 #                                                                              #
-# libnetwork library version 8.1.0 release 1                                   #
+# libnetwork library version 9.0.0 release 1                                   #
 #                                                                              #
-# copyright 2001-2024 Code Construct Systems (CCS) [CONFIDENTIAL]              #
+# copyright 2001-2025 Code Construct Systems (CCS) [CONFIDENTIAL]              #
 #                                                                              #
 ################################################################################
 

@@ -4,7 +4,7 @@
 **  libnetwork utility - get host name utility
 **  ------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __GETHOSTNAME_H
 #define __GETHOSTNAME_H

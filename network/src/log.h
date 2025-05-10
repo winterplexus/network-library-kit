@@ -4,7 +4,7 @@
 **  libnetwork - library logging functions
 **  --------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __LOG_H
 #define __LOG_H
@@ -19,21 +19,12 @@
 #endif
 
 /*
-** Define file mode string size
-*/
-#ifndef _FILE_MODE_SIZE
-#define _FILE_MODE_SIZE 8
-#else
-#error  _FILE_MODE_SIZE is defined in another include file
-#endif
-
-/*
 ** Function prototypes
 */
 extern void LogFileDirectory(const string_c_t, size_t);
 extern void LogFileSetFileName(const string_c_t);
 extern void LogFileOpen(void);
-extern void LogFilePrint(string_c_t, ...);
+extern void LogFilePrint(const string_c_t, ...);
 extern void LogFileFlush(void);
 extern void LogFileClose(void);
 

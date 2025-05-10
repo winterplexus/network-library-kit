@@ -7,25 +7,23 @@ NAME
 
 SYNOPSIS
 
-  geturl (flags)
+  geturl (options)
 
 DESCRIPTION
 
   geturl is a program that will encode or decode a given URL using RFC 3986
   syntax characters.
 
-FLAGS
+OPTIONS
 
-  The following flags are interpreted by geturl:
+  The following options are interpreted by geturl:
 
-  -?  display help
-  -d  URL to decode
-  -e  URL to encode
-  -v  print version information and exit
+  -e <URL to encode>
+  -d <URL to decode>
+  -v print version information and exit
 
 NOTES
 
-  Copyright (c) 2001-2024 Code Construct Systems (CCS)
+  Copyright (c) 2001-2025 Code Construct Systems (CCS)
 
-  libnetwork 8.1.0 network interface library
-
+  libnetwork 9.0.0 network interface library

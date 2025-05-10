@@ -4,7 +4,7 @@
 **  libnetwork utility - get options functions
 **  ------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -68,7 +68,7 @@ int getopt(int argc, string_c_t argv[], string_c_t string) {
     ** Check for unknown option symbol
     */
     if (mark == NULL || c == ':') {
-        printf("%s: unknown option -%c\n", argv[0], c);
+        printf("error-> %s: unknown option -%c\n", argv[0], c);
         return ('?');
     }
 
@@ -86,7 +86,7 @@ int getopt(int argc, string_c_t argv[], string_c_t string) {
             optind++;
         }
         else {
-            printf("%s: -%c argument missing\n", argv[0], c);
+            printf("error-> %s: -%c argument missing\n", argv[0], c);
             return ('?');
         }
     }

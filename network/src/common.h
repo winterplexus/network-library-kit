@@ -4,7 +4,7 @@
 **  libnetwork - common definitions
 **  -------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __COMMON_H
 #define __COMMON_H
@@ -47,6 +47,15 @@
 #endif
 
 /*
+** Define file mode string size
+*/
+#ifndef _MAX_FILE_MODE_SIZE
+#define _MAX_FILE_MODE_SIZE 8
+#else
+#error  _MAX_FILE_MODE_SIZE is defined in another include file
+#endif
+
+/*
 ** Undefine TRUE and FALSE if defined in another include file
 */
 #ifdef TRUE
@@ -67,7 +76,8 @@
 ** Define Boolean data type
 */
 typedef enum BooleanType {
-    FALSE = 0, TRUE = 1
+        FALSE = 0,
+        TRUE = 1
 } bool_c_t;
 
 /*

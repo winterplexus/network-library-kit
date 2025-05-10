@@ -4,7 +4,7 @@
 **  libnetwork - library logging functions
 **  --------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -80,7 +80,7 @@ void LogFileSetFileName(const string_c_t filename) {
 */
 void LogFileOpen(void) {
     int file_status;
-    char mode[_FILE_MODE_SIZE];
+    char mode[_MAX_FILE_MODE_SIZE];
 
     /*
     ** Create log file name if log file name does not exist
@@ -120,7 +120,7 @@ void LogFileOpen(void) {
 void LogFilePrint(string_c_t format, ...) {
     va_list vargs;
 #ifdef _POSIX_ENVIRONMENT
-    mode_t fmode = (S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH | S_IWOTH);
+    mode_t fmode = (S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP|S_IROTH|S_IWOTH);
 #endif
 
     /*

@@ -1,15 +1,15 @@
 /*
 **  @(#)net.c
 **
-**  libnetwork - TCP/IP network interface functions
+**  libnetwork - TCP/IP4 network interface functions
 **  -----------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
 /*
-** Connect to TCP/IP server
+** Connect to TCP/IP4 server
 */
 SOCKET_DESCRIPTOR ServerConnect(const string_c_t host_name, const int port) {
     char service[16];
@@ -33,15 +33,15 @@ SOCKET_DESCRIPTOR ServerConnect(const string_c_t host_name, const int port) {
     hints.ai_protocol = IPPROTO_TCP;
 
     /*
-    ** Get address information about TCP/IP server host using service and hints structure
+    ** Get address information about TCP/IP4 server host using service and hints structure
     */
     if (getaddrinfo(host_name, service, &hints, &results) != 0) {
-        LogFilePrint((string_c_t)"error-> unable to get IP address information for server host name (%s:%d) [%s line: %d]\n", host_name, __FILE__, __LINE__);
+        LogFilePrint((string_c_t)"error-> unable to get IP4 address information for server host name (%s:%d) [%s line: %d]\n", host_name, __FILE__, __LINE__);
         return (-2);
     }
 
     /*
-    ** Process each result until connected to the TCP/IP server host
+    ** Process each result until connected to the TCP/IP4 server host
     */
     for (r = results; r != NULL; r = r->ai_next) {
         /*
@@ -52,7 +52,7 @@ SOCKET_DESCRIPTOR ServerConnect(const string_c_t host_name, const int port) {
         }
 
         /*
-        ** Establish connection to TCP/IP server using socket handle
+        ** Establish connection to TCP/IP4 server using socket handle
         */
         if (connect(sock, r->ai_addr, (int)r->ai_addrlen) != -1) {
             connected = TRUE;
@@ -60,13 +60,13 @@ SOCKET_DESCRIPTOR ServerConnect(const string_c_t host_name, const int port) {
         }
 
         /*
-        ** Close socket (connection to TCP/IP server host failed for this address)
+        ** Close socket (connection to TCP/IP4 server host failed for this address)
         */
         SOCKET_CLOSE(sock);
     }
 
     /*
-    ** Exit if not connected to TCP/IP server host
+    ** Exit if not connected to TCP/IP4 server host
     */
     if (!connected) {
         LogFilePrint((string_c_t)"error-> unable to connect to server host (%s) [%s line: %d]\n", host_name, __FILE__, __LINE__);
@@ -85,7 +85,7 @@ SOCKET_DESCRIPTOR ServerConnect(const string_c_t host_name, const int port) {
 }
 
 /*
-** Send request to TCP/IP server
+** Send request to TCP/IP4 server
 */
 int ServerSendRequest(SOCKET_DESCRIPTOR sock, const string_c_t req, const string_c_t host_name) {
     int count = 0;
@@ -98,7 +98,7 @@ int ServerSendRequest(SOCKET_DESCRIPTOR sock, const string_c_t req, const string
     }
 
     /*
-    ** Send request buffer to TCP/IP server
+    ** Send request buffer to TCP/IP4 server
     */
     count = (int)strlen(req);
     if (send(sock, req, count, 0) == count) {
@@ -111,7 +111,7 @@ int ServerSendRequest(SOCKET_DESCRIPTOR sock, const string_c_t req, const string
 }
 
 /*
-** Receive response from TCP/IP server
+** Receive response from TCP/IP4 server
 */
 int ServerReceiveResponse(SOCKET_DESCRIPTOR sock, string_c_t resp, int size) {
     int count = 0;
@@ -122,14 +122,14 @@ int ServerReceiveResponse(SOCKET_DESCRIPTOR sock, string_c_t resp, int size) {
     memset(resp, 0, size);
 
     /*
-    ** Receive response data from TCP/IP server
+    ** Receive response data from TCP/IP4 server
     */
     count = recv(sock, resp, size, 0);
     return (count);
 }
 
 /*
-** Disconnect from TCP/IP server
+** Disconnect from TCP/IP4 server
 */
 int ServerDisconnect(SOCKET_DESCRIPTOR sock) {
     /*
@@ -156,7 +156,7 @@ int SetSocketOption(SOCKET_DESCRIPTOR sock, int level, int option_name, const vo
 }
 
 /*
-** Get IP network address (in dot notation) for a given host name
+** Get IP4 network address (in dot notation) for a given host name
 */
 int GetHostIPAddress(const string_c_t host_name, string_c_t ip_address, size_t ip_address_size) {
     struct addrinfo hints;
@@ -179,15 +179,15 @@ int GetHostIPAddress(const string_c_t host_name, string_c_t ip_address, size_t i
     hints.ai_protocol = 0;
 
     /*
-    ** Get IP address information for host name using hints structure
+    ** Get IP4 address information for host name using hints structure
     */
     if (getaddrinfo(host_name, NULL, &hints, &results) != 0) {
-        LogFilePrint((string_c_t)"error-> unable to get IP address information for host name: %s [%s line: %d]\n", host_name, __FILE__, __LINE__);
+        LogFilePrint((string_c_t)"error-> unable to get IP4 address information for host name: %s [%s line: %d]\n", host_name, __FILE__, __LINE__);
         return (-2);
     }
 
     /*
-    ** Process each result until IP network address is found
+    ** Process each result until TCP/IP4 network address is found
     */
     for (r = results; r != NULL; r = r->ai_next) {
         if (getnameinfo(r->ai_addr, (int)r->ai_addrlen, address, sizeof(address), NULL, 0, NI_NUMERICHOST) == 0) {
@@ -201,21 +201,21 @@ int GetHostIPAddress(const string_c_t host_name, string_c_t ip_address, size_t i
     freeaddrinfo(results);
 
     /*
-    ** Return IP network address
+    ** Return IP4 network address
     */
     strcpy_p(ip_address, ip_address_size, address, sizeof(address));
     return (0);
 }
 
 /*
-** Get host name for a given IP network address (in dot notation)
+** Get host name for a given TCP/IP4 network address (in dot notation)
 */
 int GetHostName(const string_c_t ip_address, string_c_t host_name, size_t host_name_size) {
     struct sockaddr_in sa;
     char host[_MAX_HOST_NAME_SIZE];
 
     /*
-    ** Is IP network address valid?
+    ** Is IP4 network address valid?
     */
     if (!ip_address || !strlen(ip_address)) {
         return (-1);
@@ -228,7 +228,7 @@ int GetHostName(const string_c_t ip_address, string_c_t host_name, size_t host_n
     sa.sin_family = AF_INET;
 
     /*
-    ** Convert IP network address to binary form in socket address structure
+    ** Convert TCP/IP4 network address to binary form in socket address structure
     */
     inet_pton(AF_INET, ip_address, &sa.sin_addr);
 
@@ -236,7 +236,7 @@ int GetHostName(const string_c_t ip_address, string_c_t host_name, size_t host_n
     ** Get host name using socket address structure
     */
     if (getnameinfo((struct sockaddr *) & sa, sizeof(sa), host, sizeof(host), NULL, 0, NI_NAMEREQD) != 0) {
-        LogFilePrint((string_c_t)"error-> unable to get host name for IP address: %s [%s line: %d]\n", ip_address, __FILE__, __LINE__);
+        LogFilePrint((string_c_t)"error-> unable to get host name for IP4 address: %s [%s line: %d]\n", ip_address, __FILE__, __LINE__);
         return (-2);
     }
 

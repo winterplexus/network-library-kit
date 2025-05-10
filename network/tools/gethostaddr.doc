@@ -3,28 +3,28 @@ gethostaddr                                                          gethostaddr
 
 NAME
 
-  gethostaddr - get IP address of a DNS host utility
+  gethostaddr - get IP4 address of a DNS host utility
 
 SYNOPSIS
 
-  gethostaddr (flags)
+  gethostaddr (options)
 
 DESCRIPTION
 
-  gethostaddr is a program that will search for the Internet IP address of a DNS
-  host (or domain).  If the IP address is found it will be displayed in standard
+  gethostaddr is a program that will search for the Internet IP4 address of a DNS
+  host (or domain).  If the IP4 address is found it will be displayed in standard
   dot notation (nnn.nnn.nnn.nnn).
 
-FLAGS
+OPTIONS
 
-  The following flags are interpreted by gethostaddr:
+  The following options are interpreted by gethostaddr:
 
-  -?  display help
-  -h  DNS domain name host name
-  -v  display version of gethostaddr
+  options: -h <hostname>
+           -v print version information and exit
+           -? print this usage
 
 NOTES
 
-  Copyright (c) 2001-2024 Code Construct Systems (CCS)
+  Copyright (c) 2001-2025 Code Construct Systems (CCS)
 
-  libnetwork 8.1.0 network interface library
+  libnetwork 9.0.0 network interface library

@@ -3,30 +3,29 @@ gethostname                                                          gethostname
 
 NAME
 
-  gethostname - get DNS host of a IP address utility
+  gethostname - get DNS host of a IP4 address utility
 
 SYNOPSIS
 
-  gethostname (flags)
+  gethostname (options)
 
 DESCRIPTION
 
   gethostname is a program that will search for a DNS host (or domain) name of a
-  Internet IP address.
+  Internet IP4 address.
 
-FLAGS
+OPTIONS
 
-  The following flags are interpreted by gethostname:
+  The following options are interpreted by gethostname:
 
-  -?  display help
-  -a  Internet IP address
-  -v  display version of gethostname
+  -a <IP4 address>
+  -v print version information and exit
+  -? print this usage
 
-  Internet IP address must be in standard dot notation (nnn.nnn.nnn.nnn).
+  Internet IP4 address must be in standard dot notation (nnn.nnn.nnn.nnn).
 
 NOTES
 
-  Copyright (c) 2001-2024 Code Construct Systems (CCS)
+  Copyright (c) 2001-2025 Code Construct Systems (CCS)
 
-  libnetwork 8.1.0 network interface library
-
+  libnetwork 9.0.0 network interface library
