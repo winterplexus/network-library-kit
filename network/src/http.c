@@ -4,7 +4,7 @@
 **  libnetwork - HTTP networking functions
 **  --------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -22,7 +22,7 @@ HTTP_SERVER_ACTION_REQUEST *HTTPAllocateServerActionRequest(HTTP_SERVER_ACTION_R
     */
     hsar = (HTTP_SERVER_ACTION_REQUEST *)malloc(sizeof(HTTP_SERVER_ACTION_REQUEST));
     if (hsar == NULL) {
-        LogFilePrint((string_c_t)"error-> insufficient memory for server action request structure [%s line: %d]\n", __FILE__, __LINE__);
+        LogFilePrint((string_c_t)"error-> insufficient memory for HTTP server action request structure [%s line: %d]\n", __FILE__, __LINE__);
         return (NULL);
     }
 
@@ -490,7 +490,7 @@ int HTTPSendServerRequest(HTTP_SERVER_ACTION_REQUEST *hsar) {
     /*
     ** Process each response from the HTTP server
     */
-    do {
+    do  {
         /*
         ** Exit if system call was interrupted
         */
@@ -520,8 +520,7 @@ int HTTPSendServerRequest(HTTP_SERVER_ACTION_REQUEST *hsar) {
         if (hsar->trace) {
             LogFilePrint((string_c_t)"trace-> response buffer: %s\n", buffer);
         }
-    }
-    while (count > 0);
+    } while (count > 0);
 
     /*
     ** Free response buffer
@@ -604,7 +603,7 @@ int HTTPSendServerRequestNoTimeout(HTTP_SERVER_ACTION_REQUEST *hsar) {
     /*
     ** Process each response from the HTTP server
     */
-    do {
+    do  {
         /*
         ** Exit if system call was interrupted
         */
@@ -634,8 +633,7 @@ int HTTPSendServerRequestNoTimeout(HTTP_SERVER_ACTION_REQUEST *hsar) {
         if (hsar->trace) {
             LogFilePrint((string_c_t)"trace-> response buffer: %s\n", buffer);
         }
-    }
-    while (count > 0);
+    } while (count > 0);
 
     /*
     ** Free response buffer

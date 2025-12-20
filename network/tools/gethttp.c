@@ -4,7 +4,7 @@
 **  libnetwork utility - get HTTP response utility
 **  ----------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -16,14 +16,14 @@ static int ProcessRequest(HTTP_PARAMETERS *, HTTP_STATISTICS *);
 static int ProcessResponseFile(FILE *, HTTP_PARAMETERS *, HTTP_STATISTICS *);
 static void SetParameters(HTTP_PARAMETERS *);
 static void SetStatistics(HTTP_STATISTICS *);
-static void SetOptions(string_c_t, HTTP_PARAMETERS *);
+static void SetFlags(string_c_t, HTTP_PARAMETERS *);
 static void InterruptHandler(void);
 static void DisplayStatistics(HTTP_PARAMETERS *, HTTP_STATISTICS *);
 static void DisplayVersion(void);
 static void DisplayUsage(void);
 
 /*
-** Get host IP address utility
+** Get host IP4 address utility
 */
 int main(int argc, string_c_t argv[]) {
     HTTP_PARAMETERS hp;
@@ -101,7 +101,7 @@ static int GetOptions(int argc, string_c_t argv[], HTTP_PARAMETERS *hp) {
                       break;
             case 'd': hp->trace = TRUE;
                       break;
-            case 'f': strcpy_p(hp->responsefile, _MAX_FILE_NAME_SIZE, optarg, strlen(optarg));
+            case 'o': strcpy_p(hp->responsefile, _MAX_FILE_NAME_SIZE, optarg, strlen(optarg));
                       break;
             case 'h': strcpy_p(hp->hostname, _MAX_HOST_NAME_SIZE, optarg, strlen(optarg));
                       break;
@@ -109,7 +109,7 @@ static int GetOptions(int argc, string_c_t argv[], HTTP_PARAMETERS *hp) {
                       break;
             case 'm': strcpy_p(hp->method, _MAX_METHOD_SIZE, optarg, strlen(optarg));
                       break;
-            case 'o': SetOptions(optarg, hp);
+            case 'f': SetFlags(optarg, hp);
                       break;
             case 'p': hp->port = atoi(optarg);
                       break;
@@ -151,8 +151,8 @@ static int GetOptions(int argc, string_c_t argv[], HTTP_PARAMETERS *hp) {
 static int ProcessRequest(HTTP_PARAMETERS *hp, HTTP_STATISTICS *hs) {
     HTTP_SERVER_ACTION_REQUEST *hsar = NULL;
     HTTP_REQUEST_TYPE method = HTTP_REQ_TYPE_GET;
-    FILE *fp;
     int status = 0;
+    FILE *fp;
 
 #ifdef PRINT_WARNING_MESSAGES
     HTTPPrintWarningMessages(TRUE);
@@ -165,17 +165,25 @@ static int ProcessRequest(HTTP_PARAMETERS *hp, HTTP_STATISTICS *hs) {
         /*
         ** Display error message
         */
-        printf("HTTPAllocateServerActionRequest() failed: insufficient memory for HTTP_SERVER_ACTION_REQUEST\n");
+        printf("error-> HTTPAllocateServerActionRequest() failed: insufficient memory for HTTP_SERVER_ACTION_REQUEST\n");
         return (EXIT_FAILURE);
     }
 
     /*
-    ** Get temporary file pointer
+    ** Open reponse file (or temporary file in place of response file)
     */
-    tmpfile_p(&fp);
-    if (fp == NULL) {
-        perror("unable to create and open temporary file");
-        return (EXIT_FAILURE);
+    if (strlen(hp->responsefile)) {
+        if ((fopen_p(&fp, hp->responsefile, (const string_c_t)_F_RW_BIN)) != 0) {
+            printf("error-> unable to open response file (errno %d)\n", errno);
+            exit(EXIT_FAILURE);
+        }
+    }
+    else {
+        tmpfile_p(&fp);
+        if (fp == NULL) {
+            printf("error-> unable to create and open temporary file\n");
+            exit(EXIT_FAILURE);
+        }
     }
 
     /*
@@ -254,7 +262,7 @@ static int ProcessResponseFile(FILE *fp, HTTP_PARAMETERS *hp, HTTP_STATISTICS *h
     char buffer[BUFSIZ];
 
     /*
-    ** Rewind temporary file
+    ** Rewind response file
     */
     rewind(fp);
 
@@ -331,7 +339,7 @@ static void SetStatistics(HTTP_STATISTICS *hs) {
 /*
 ** Set options
 */
-static void SetOptions(string_c_t argument, HTTP_PARAMETERS *hp) {
+static void SetFlags(string_c_t argument, HTTP_PARAMETERS *hp) {
     if (strcmp(argument, "output-on") == 0) {
         hp->mode |= _MODE_OUTPUT_ON;
     }
@@ -385,21 +393,20 @@ static void DisplayVersion(void) {
 */
 static void DisplayUsage(void) {
     printf("usage: %s (options)\n\n", _GETHTTP_VERSION_PRODUCT);
-    printf("where (options) include:\n\n");
-    printf("-h  hostname\n");
-    printf("-p  port number\n");
-    printf("-r  request parameters\n");
-    printf("-f  response file path\n");
-    printf("-m  [get|post]\n");
-    printf("-t  timeout (in seconds)\n");
-    printf("-l  log file name\n");
-    printf("-o  options\n");
-    printf("-d  enable debug\n");
-    printf("-v  print version information and exit\n");
-    printf("-?  print this usage\n\n");
+    printf("options: -h <hostname>\n");
+    printf("         -p <port number>\n");
+    printf("         -r <request parameters>\n");
+    printf("         -o <response file path>\n");
+    printf("         -m <[get|post]>\n");
+    printf("         -t <timeout in seconds>\n");
+    printf("         -l <log file name>\n");
+    printf("         -f <flags>\n");
+    printf("         -d enable debug\n");
+    printf("         -v print version information and exit\n");
+    printf("         -? print this usage\n");
 
     /*
     ** Terminate application
     */
     exit(EXIT_SUCCESS);
-}     
+}

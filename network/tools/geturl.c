@@ -4,7 +4,7 @@
 **  libnetwork utility - get encoded/decoded URL utility
 **  ----------------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -149,11 +149,10 @@ static void DisplayVersion(void) {
 */
 static void DisplayUsage(void) {
     printf("usage: %s (options)\n\n", _GETURL_VERSION_PRODUCT);
-    printf("where (options) include:\n\n");
-    printf("-e  encode\n");
-    printf("-d  decode\n");
-    printf("-v  print version information and exit\n");
-    printf("-?  print this usage\n\n");
+    printf("options: -e <URL to encode>\n");
+    printf("         -d <URL to decode>\n");
+    printf("         -v print version information and exit\n");
+    printf("         -? print this usage\n");
 
     /*
     ** Terminate application

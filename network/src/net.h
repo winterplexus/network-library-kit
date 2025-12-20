@@ -4,7 +4,7 @@
 **  libnetwork - TCP/IP network interface functions
 **  -----------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __NET_H
 #define __NET_H
@@ -81,7 +81,7 @@
 #endif
 
 /*
-** Define maximum IP address string size
+** Define maximum IP4 address string size
 */
 #ifndef _MAX_IP_ADDRESS_SIZE
 #define _MAX_IP_ADDRESS_SIZE 16

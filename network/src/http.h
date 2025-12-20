@@ -4,7 +4,7 @@
 **  libnetwork - HTTP networking functions
 **  --------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __HTTP_H
 #define __HTTP_H
@@ -12,9 +12,6 @@
 /*
 ** Check if HTTP methods are defined in another include file
 */
-#ifdef  _HTTP_METHOD_OPTIONS
-#error  _HTTP_METHOD_OPTIONS is defined in another include file
-#endif
 #ifdef  _HTTP_METHOD_GET
 #error  _HTTP_METHOD_GET is defined in another include file
 #endif
@@ -30,24 +27,27 @@
 #ifdef  _HTTP_METHOD_DELETE
 #error  _HTTP_METHOD_DELETE is defined in another include file
 #endif
+#ifdef  _HTTP_METHOD_CONNECT
+#error  _HTTP_METHOD_CONNECT is defined in another include file
+#endif
 #ifdef  _HTTP_METHOD_TRACE
 #error  _HTTP_METHOD_TRACE is defined in another include file
 #endif
-#ifdef  _HTTP_METHOD_CONNECT
-#error  _HTTP_METHOD_CONNECT is defined in another include file
+#ifdef  _HTTP_METHOD_PATCH
+#error  _HTTP_METHOD_PATCH is defined in another include file
 #endif
 
 /*
 ** Define HTTP methods
 */
-#define _HTTP_METHOD_OPTIONS "OPTIONS"
 #define _HTTP_METHOD_GET "GET"
 #define _HTTP_METHOD_HEAD "HEAD"
 #define _HTTP_METHOD_POST "POST"
 #define _HTTP_METHOD_PUT "PUT"
 #define _HTTP_METHOD_DELETE "DELETE"
-#define _HTTP_METHOD_TRACE "TRACE"
 #define _HTTP_METHOD_CONNECT "CONNECT"
+#define _HTTP_METHOD_TRACE "TRACE"
+#define _HTTP_METHOD_PATCH "PATCH"
 
 /*
 ** Define default timeout period
@@ -100,6 +100,5 @@ extern int HTTPFreeResponseFile(HTTP_SERVER_ACTION_REQUEST *);
 extern int HTTPFreeLogFileName(HTTP_SERVER_ACTION_REQUEST *);
 extern int HTTPSendServerRequest(HTTP_SERVER_ACTION_REQUEST *);
 extern int HTTPSendServerRequestNoTimeout(HTTP_SERVER_ACTION_REQUEST *);
-
 
 #endif /* __HTTP_H */

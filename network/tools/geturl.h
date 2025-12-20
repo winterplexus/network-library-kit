@@ -1,10 +1,10 @@
 /*
 **  @(#)geturl.h
 **
-**  libnetwork utility - get URL utility
-**  ------------------------------------
+**  libnetwork utility - get encoded/decoded URL utility
+**  ----------------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __GETURL_H
 #define __GETURL_H

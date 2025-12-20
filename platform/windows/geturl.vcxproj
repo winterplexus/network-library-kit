@@ -24,6 +24,7 @@
     <ClCompile Include="..\..\network\tools\port.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\network\src\common.h" />
     <ClInclude Include="..\..\network\tools\getopt.h" />
     <ClInclude Include="..\..\network\tools\geturl.h" />
     <ClInclude Include="..\..\network\tools\modules.h" />

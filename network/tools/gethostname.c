@@ -1,10 +1,10 @@
 /*
 **  @(#)gethostname.c
 **
-**  libnetwork utility - get host name from IP address utility
+**  libnetwork utility - get host name from IP4 address utility
 **  ----------------------------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -17,7 +17,7 @@ static void DisplayVersion(void);
 static void DisplayUsage(void);
 
 /*
-** Get host IP address utility
+** Get host IP4 address utility
 */
 int main(int argc, string_c_t argv[]) {
     char hostname[_MAX_HOST_NAME_SIZE + 1], address[_MAX_IP_ADDRESS_SIZE + 1];
@@ -55,7 +55,7 @@ int main(int argc, string_c_t argv[]) {
     */
     if (GetHostName(address, hostname, _MAX_HOST_NAME_SIZE) == EXIT_SUCCESS) {
         printf("host name  : %s\n", hostname);
-        printf("IP address : %s\n\n", address);
+        printf("IP4 address : %s\n\n", address);
     }
 
     /*
@@ -133,10 +133,9 @@ static void DisplayVersion(void) {
 */
 static void DisplayUsage(void) {
     printf("usage: %s (options)\n\n", _GETHOSTNAME_VERSION_PRODUCT);
-    printf("where (options) include:\n\n");
-    printf("-a  IP4 address\n");
-    printf("-v  print version information and exit\n");
-    printf("-?  print this usage\n\n");
+    printf("options: -a <IP4 address>\n");
+    printf("         -v print version information and exit\n");
+    printf("         -? print this usage\n");
 
     /*
     ** Terminate application

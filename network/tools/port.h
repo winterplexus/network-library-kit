@@ -4,7 +4,7 @@
 **  libnetwork utility - portable functions
 **  ---------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #ifndef __PORT_H
 #define __PORT_H
@@ -15,6 +15,7 @@
 extern int strcat_p(string_c_t, size_t, const string_c_t, size_t);
 extern int strcpy_p(string_c_t, size_t, const string_c_t, size_t);
 extern int strfmt_p(string_c_t, size_t, const string_c_t, ...);
+extern int strlen_s(string_c_t, size_t);
 extern int strtok_p(string_c_t *, string_c_t, const string_c_t, string_c_t *);
 extern int time_p(time_t *);
 extern int localtime_p(time_t *, struct tm *);

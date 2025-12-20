@@ -1,10 +1,10 @@
 /*
 **  @(#)port.c
 **
-**  libnetwork - portable functions
-**  -------------------------------
+**  libnetwork utility - portable functions
+**  ---------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -46,6 +46,18 @@ int strfmt_p(string_c_t destination, size_t destination_size, const string_c_t f
     va_end(varg);
 
     return (rc);
+}
+
+/*
+** String length
+*/
+int strlen_s(string_c_t source, size_t source_size)
+{
+#ifdef _SCL
+    return ((int)strnlen_s(source, source_size));
+#else
+    return ((int)strlen(source));
+#endif
 }
 
 /*
@@ -118,11 +130,11 @@ int fclose_p(FILE *file_pointer) {
 /*
 ** Get temporary file
 */
-int tmpfile_p(FILE **file_pointer) {
+int tmpfile_p(FILE **fp) {
 #ifdef _SCL
-    return (tmpfile_s(file_pointer));
+    return (tmpfile_s(fp));
 #else
-    *file_pointer = tmpfile();
-    return (*file_pointer != NULL ? EXIT_SUCCESS : EXIT_FAILURE);
+    *fp = tmpfile();
+    return (*fp != NULL ? EXIT_SUCCESS : EXIT_FAILURE);
 #endif
 }

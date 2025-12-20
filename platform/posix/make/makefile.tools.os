@@ -1,10 +1,10 @@
 ################################################################################
 #                                                                              #
-# makefile.os                                                                  #
+# makefile.tools.os                                                            #
 #                                                                              #
-# libnetwork library version 8.1.0 release 1                                   #
+# libnetwork library - tools version 9.0.0 release 1                           #
 #                                                                              #
-# copyright 2001-2024 Code Construct Systems (CCS) [CONFIDENTIAL]              #
+# copyright 2001-2025 Code Construct Systems (CCS) [CONFIDENTIAL]              #
 #                                                                              #
 ################################################################################
 
@@ -26,6 +26,11 @@ GETHOSTNAME = gethostname
 GETHTTP = gethttp
 
 #
+# Get HTTP URL tool.
+#
+GETURL = geturl
+
+#
 # C compiler definitions and flags.
 #
 CC = c99
@@ -38,22 +43,22 @@ CFLAGS = -c $(CDEBUG) $(COPTIMIZE) -ansi -pedantic -std=c99 $(CDEFS)
 # C compiler warning flags.
 #
 CWARNS = \
-    -Werror \
-    -Wall \
-    -Wextra \
-    -Wwrite-strings \
-    -Winit-self \
-    -Wcast-align \
-    -Wpointer-arith \
-    -Wstrict-aliasing \
-    -Wformat=2 \
-    -Wmissing-declarations \
-    -Wmissing-include-dirs \
-    -Wno-unused-parameter \
-    -Wuninitialized \
-    -Wold-style-definition \
-    -Wstrict-prototypes \
-    -Wmissing-prototypes
+	-Werror \
+	-Wall \
+	-Wextra \
+	-Wwrite-strings \
+	-Winit-self \
+	-Wcast-align \
+	-Wpointer-arith \
+	-Wstrict-aliasing \
+	-Wformat=2 \
+	-Wmissing-declarations \
+	-Wmissing-include-dirs \
+	-Wno-unused-parameter \
+	-Wuninitialized \
+	-Wold-style-definition \
+	-Wstrict-prototypes \
+	-Wmissing-prototypes
 
 #
 # Include flags.
@@ -72,13 +77,14 @@ OBJECTS = \
 	gethostaddr.o \
 	gethostname.o \
 	gethttp.o \
+    geturl.o \
 	getopt.o \
 	port.o
 
 #
 # List of targets to be made.
 #
-all: $(GETHOSTADDR) $(GETHOSTNAME) $(GETHTTP)
+all: $(GETHOSTADDR) $(GETHOSTNAME) $(GETHTTP) $(GETURL)
 
 #
 # Rule for building get host address tool the using specified objects and network library file.
@@ -102,6 +108,13 @@ $(GETHTTP): gethttp.o getopt.o port.o
 	@$(CC) gethttp.o getopt.o port.o $(LIB) -o $@
 
 #
+# Rule for building get HTTP URL tool the using specified objects and network library file.
+#
+$(GETURL): geturl.o geturl.o port.o 
+	@echo "building $@"
+	@$(CC) geturl.o getopt.o port.o $(LIB) -o $@
+
+#
 # Rule for building the get host address utility object
 #
 gethostaddr.o: gethostaddr.c
@@ -119,6 +132,13 @@ gethostname.o: gethostname.c
 # Rule for building the get HTTP response utility object.
 #
 gethttp.o: gethttp.c 
+	@echo "building $@"
+	@$(CC) $(CFLAGS) $(INCLUDE) $(CWARNS) -o $@ $<
+
+#
+# Rule for building the get HTTP URL utility object.
+#
+geturl.o: geturl.c 
 	@echo "building $@"
 	@$(CC) $(CFLAGS) $(INCLUDE) $(CWARNS) -o $@ $<
 
@@ -144,4 +164,5 @@ clean:
 	rm -f $(GETHOSTADDR)
 	rm -f $(GETHOSTNAME)
 	rm -f $(GETHTTP)
+	rm -f $(GETURL)
 

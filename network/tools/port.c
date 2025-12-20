@@ -4,7 +4,7 @@
 **  libnetwork utility - portable functions
 **  ---------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
@@ -37,7 +37,7 @@ int strfmt_p(string_c_t destination, size_t destination_size, const string_c_t f
     va_list varg;
     int rc;
 
-    va_start(varg,format);
+    va_start(varg, format);
 #ifdef _SCL
     rc = vsprintf_s(destination, destination_size, format, varg);
 #else
@@ -46,6 +46,18 @@ int strfmt_p(string_c_t destination, size_t destination_size, const string_c_t f
     va_end(varg);
 
     return (rc);
+}
+
+/*
+** String length
+*/
+int strlen_s(string_c_t source, size_t source_size)
+{
+#ifdef _SCL
+    return ((int)strnlen_s(source, source_size));
+#else
+    return ((int)strlen(source));
+#endif
 }
 
 /*
@@ -94,16 +106,16 @@ int localtime_p(time_t *timer, struct tm *time) {
 /*
 ** Open file stream
 */
-int fopen_p(FILE** file_pointer, const string_c_t file_name, const string_c_t mode) {
+int fopen_p(FILE **file_pointer, const string_c_t file_name, const string_c_t mode) {
 #ifdef _SCL
 #ifdef _WINDOWS_ENVIRONMENT
-    * file_pointer = _fsopen(file_name, mode, _SH_DENYNO);
+    *file_pointer = _fsopen(file_name, mode, _SH_DENYNO);
     return (*file_pointer != NULL ? EXIT_SUCCESS : EXIT_FAILURE);
 #else
     return (fopen_s(file_pointer, file_name, mode));
 #endif
 #else
-    * file_pointer = fopen(file_name, mode);
+    *file_pointer = fopen(file_name, mode);
     return (*file_pointer != NULL ? EXIT_SUCCESS : EXIT_FAILURE);
 #endif
 }
@@ -120,9 +132,9 @@ int fclose_p(FILE *file_pointer) {
 */
 int tmpfile_p(FILE **fp) {
 #ifdef _SCL
-     return (tmpfile_s(fp));
+    return (tmpfile_s(fp));
 #else
-     *fp = tmpfile();
-     return (*fp != NULL ? EXIT_SUCCESS : EXIT_FAILURE);
+    *fp = tmpfile();
+    return (*fp != NULL ? EXIT_SUCCESS : EXIT_FAILURE);
 #endif
 }

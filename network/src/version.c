@@ -4,7 +4,7 @@
 **  libnetwork - library version information
 **  ----------------------------------------
 **
-**  copyright 2001-2024 Code Construct Systems (CCS)
+**  copyright 2001-2025 Code Construct Systems (CCS)
 */
 #include "modules.h"
 
